@@ -1,0 +1,28 @@
+#HANGMAN
+print("WELCOME TO THIS HANGMAN GAME !!!")
+word = input("INPUT A WORD : ")
+blank = ""
+for i in range(len(word)) :
+    blank += "_"
+word_list = list(word)
+blank_list = list(blank)
+# print(word_list)
+# print(blank_list)
+res = ''.join(blank_list)
+for i in range(len(word),-1,-1) :
+    print(f"ATTEMPT LEFT : {i}")
+    print("\n\n",res)
+    guess = input("GUESS A LETTER : ")
+    if guess in word_list :
+        posisi = []
+        for j in range(len(word)) :
+            if guess == word[j] :
+                posisi.append(j)
+        for a in range(len(posisi)) :
+            blank_list[posisi[a]] = guess
+        res = ''.join(blank_list)
+        if res == word :
+            print(f"YOUR ANSWER << {res} >> IS CORRECT\nCONGRATS!! HERE'S A COOKIE")
+            break
+    else :
+        print("THAT ALPHABET ISN'T CONTAINED IN THIS WORD")
